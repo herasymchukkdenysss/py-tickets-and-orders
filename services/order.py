@@ -17,8 +17,8 @@ def create_order(
     order = Order.objects.create(user=user)
 
     if date is not None:
-        Order.objects.filter(id=order.id).update(created_at=date)
-        order.refresh_from_db(fields=["created_at"])
+        order.created_at = date
+        order.save()
 
     order.save()
 
